@@ -13,6 +13,14 @@ body {
 main {
   flex: 1;
 }
+.btn-primary {
+  background-color: #f0c040;
+  color: black;
+}
+.rating span {
+  color: #f0c040;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
