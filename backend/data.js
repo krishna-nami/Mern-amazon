@@ -1,5 +1,5 @@
 const data = {
-  porducts: [
+  products: [
     {
       name: 'Nike Slim Shirt',
       slug: 'nike-slim-shirt',
@@ -18,7 +18,7 @@ const data = {
       category: 'Shirts',
       image: '/images/p2.jpg',
       price: 150,
-      countInStock: 20,
+      countInStock: 0,
       brand: 'Adidas',
       rating: 4.0,
       numReviews: 10,
@@ -44,7 +44,7 @@ const data = {
       price: 80,
       countInStock: 10,
       brand: 'Nike',
-      rating: 4.5,
+      rating: 2.5,
       numReviews: 10,
       description: 'high qulaity shirt in town',
     },
