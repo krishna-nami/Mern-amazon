@@ -14,6 +14,13 @@ app.get('/api/products/slug/:slug', async (req, res) => {
   }
   res.send(product);
 });
+app.get('/api/products/:id', async (req, res) => {
+  const product = await data.products.find((x) => x._id === req.params.id);
+  if (!product) {
+    res.status(404).send({ message: 'product not found' });
+  }
+  res.send(product);
+});
 
 app.listen(PORT, () => {
   console.log(` The server is running in the ${PORT} address`);
