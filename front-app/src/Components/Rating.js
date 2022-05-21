@@ -40,7 +40,7 @@ const Rating = (props) => {
           className={
             rating >= 4
               ? 'fas fa-star'
-              : rating >= 0.3
+              : rating >= 3.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
