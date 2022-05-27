@@ -1,7 +1,6 @@
 const data = {
   products: [
     {
-      _id: '1',
       name: 'Nike Slim Shirt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
@@ -14,7 +13,6 @@ const data = {
       description: 'high qulaity shirt in town',
     },
     {
-      _id: '2',
       name: 'Adidas Fit Shirt',
       slug: 'Adidas-fit-shirt',
       category: 'Shirts',
@@ -27,7 +25,6 @@ const data = {
       description: 'high qulaity shirt in Canberra',
     },
     {
-      _id: '3',
       name: 'Nike Slim Pants',
       slug: 'nike-slim-pants',
       category: 'Pants',
@@ -40,7 +37,6 @@ const data = {
       description: 'high qulaity shirt in town',
     },
     {
-      _id: '4',
       name: 'Adidas Fit Pants',
       slug: 'Adidas-Fit-pants',
       category: 'Pants',
