@@ -8,7 +8,7 @@ productRoute.get('/', async (req, res) => {
   res.send(products);
 });
 productRoute.get('/slug/:slug', async (req, res) => {
-  const product = await Product.findOne((x) => x.slug === req.params.slug);
+  const product = await Product.findOne({ slug: req.params.slug });
   if (!product) {
     res.status(404).send({ message: 'product not found' });
   }

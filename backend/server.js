@@ -2,8 +2,9 @@ import express from 'express';
 import data from './data.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import productRouter from './router/productRouter.js';
+import seedRouter from './router/seedRoutes.js';
 import productRoute from './router/productRoutes.js';
+import userRouter from './router/userRoutes.js';
 
 dotenv.config();
 mongoose
@@ -20,22 +21,15 @@ mongoose
   });
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const PORT = process.env.PORT || 5000;
 
-app.use('/api/seed', productRouter);
+app.use('/api/seed', seedRouter);
 app.use('/api/products', productRoute);
+app.use('/api/users', userRouter);
 
-app.get('/api/products/slug/:slug', async (req, res) => {
-  const product = await data.products.find((x) => x.slug === req.params.slug);
-  if (!product) {
-    res.status(404).send({ message: 'product not found' });
-  }
-  res.send(product);
-});
-app.get('/api/products/:id', async (req, res) => {
-  const product = await data.products.find((x) => x._id === req.params.id);
-  if (!product) {
-    res.status(404).send({ message: 'product not found' });
-  }
-  res.send(product);
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
