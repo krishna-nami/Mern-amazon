@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import seedRouter from './router/seedRoutes.js';
 import productRoute from './router/productRoutes.js';
 import userRouter from './router/userRoutes.js';
+import orderRouter from './router/orderRoutes.js';
 
 dotenv.config();
 mongoose
@@ -29,6 +30,7 @@ const PORT = process.env.PORT || 5000;
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRoute);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
