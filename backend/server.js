@@ -24,6 +24,9 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.get('/api/keys/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_ID || 'sb');
+});
 
 const PORT = process.env.PORT || 5000;
 
