@@ -13,7 +13,8 @@ body {
 main {
   flex: 1;
 }
-.btn-primary {
+.btn-primary,
+.btn-outline-primary {
   background-color: #f0c040;
   color: black;
 }
@@ -30,9 +31,12 @@ main {
   border: 1px #404040 solid;
   margin: 1rem;
 }
+.card img {
+  width: 60%;
+}
 .product img {
-  width: 100%;
-  max-width: 200px;
+  width: 60%;
+  max-width: 100px;
 }
 .product-info {
   padding: 1rem;
@@ -53,4 +57,25 @@ main {
 .checkout-steps > div.active {
   border-bottom: 0.2rem solid #f0c040;
   color: #f08000;
+}
+/* side bar */
+.navbar-brand {
+  font-weight: bold;
+}
+.side-navbar {
+  width: 240px;
+  height: 100%;
+  position: absolute;
+  left: -300px;
+  background-color: black;
+  transition: 0.5s;
+}
+.side-active {
+  margin-left: 240px;
+}
+.active-nav {
+  left: 0;
+}
+.site-container {
+  transition: 0.4s;
 }
