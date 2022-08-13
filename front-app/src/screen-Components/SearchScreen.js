@@ -54,8 +54,10 @@ export default function SearchScreen() {
   const rating = sp.get('rating') || 'all';
   const order = sp.get('order') || 'newest';
   const page = sp.get('page') || 1;
+
   const [{ loading, error, products, pages, countProducts }, dispatch] =
     useReducer(reducer, { loading: true, error: '' });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -69,6 +71,7 @@ export default function SearchScreen() {
     };
     fetchData();
   }, [category, error, order, page, price, query, rating]);
+
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -82,6 +85,7 @@ export default function SearchScreen() {
     };
     fetchCategories();
   }, [dispatch]);
+
   const getFilterUrl = (filter) => {
     const filterPage = filter.page || page;
     const filterCategory = filter.category || category;
@@ -99,7 +103,7 @@ export default function SearchScreen() {
       </Helmet>
       <Row>
         <Col md={3}>
-          <h3>Department</h3>
+          <h5 className="btn-primary p-1">Categories</h5>
           <>
             <ul>
               <li>
@@ -123,6 +127,7 @@ export default function SearchScreen() {
             </ul>
           </>
           <>
+            <h5 className="btn-primary p-1">Price Range</h5>
             <ul>
               <li>
                 <Link
@@ -136,7 +141,7 @@ export default function SearchScreen() {
                 <li key={p.value}>
                   <Link
                     className={p === price ? 'text-bold' : ''}
-                    to={getFilterUrl({ price: p })}
+                    to={getFilterUrl({ price: p.value })}
                   >
                     {p.name}
                   </Link>
@@ -145,7 +150,7 @@ export default function SearchScreen() {
             </ul>
           </>
           <>
-            <h4>Agerage Review</h4>
+            <h5 className="btn-primary p-1">Agerage Review</h5>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -178,8 +183,8 @@ export default function SearchScreen() {
               <Row className="justify-content-between mb-3">
                 <Col md={6}>
                   <div>
-                    {countProducts === 0 ? 'No' : countProducts} Results
-                    {query !== 'all' && ':' + query}
+                    {countProducts === 0 ? 'No' : countProducts} Results found
+                    <strong> {query !== 'all' && ': ' + query}</strong>
                     {category !== 'all' && ':' + category}
                     {price !== 'all' && ': Price' + price}
                     {rating !== 'all' && ': Rating' + rating}
@@ -212,7 +217,7 @@ export default function SearchScreen() {
                 </Col>
               </Row>
               {products.length === 0 && (
-                <MessageBox>No PRoduct Found</MessageBox>
+                <MessageBox>No Product Found</MessageBox>
               )}
               <Row>
                 {products.map((product) => (

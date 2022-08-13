@@ -27,7 +27,7 @@ productRoute.get(
         ? {
             name: {
               $regex: searchQuery,
-              $option: 'i',
+              $options: 'i',
             },
           }
         : {};
